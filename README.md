@@ -36,7 +36,7 @@ visible绑定 绑定一个值来确定DOM元素显示或隐藏（改变display�
 参数设置为一个假值（false 0 null undefined等）隐藏样式
 参数设置为一个真值（true Object对象或数组 不等于null等）显示样式
 text绑定  让DOM元素显示参数值
-通常绑定在<span>、<em>，实际上任何元素都可以
+通常绑定在(<span>、<em>)，实际上任何元素都可以
 讲参数值设置成元素内容，之前的内容会被覆盖
 html绑定  DOM元素显示的值为绑定的参数
 KO设置该参数到元素的innerHTML属性上，元素之前的内容会被覆盖
