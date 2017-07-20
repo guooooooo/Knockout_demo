@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <script src="knockout-3.4.2.js"></script>
+    </head>
+    <body>
+        <p>First name: 
+            <input type="text" data-bind="value: firstName" />
+        </p>
+        <p>Last name: 
+            <input type="text" data-bind="value: lastName" />
+        </p>
+        <h2>Hello,
+            <input data-bind="value: fullName" />!
+        </h2>
+        <script>
+            function AppViewModel() {
+                var self = this;
+                this.firstName = ko.observable('huni');
+                this.lastName = ko.observable('faker');
+
+                this.fullName = ko.computed({
+                    read: function() {
+                        return self.firstName() + " " + self.lastName();
+                    },
+                    write: function (value) {
+                        var lastSpacePos = value.lastIndexOf(" ");
+                        if (lastSpacePos > 0) {
+                            self.firstName(value.substring(0,lastSpacePos));
+                            self.lastName(value.substring(lastSpacePos + 1));
+                        }
+                    },
+                    owner: self
+                });                
+            }
+            ko.applyBindings(new AppViewModel());
+        </script>
+    </body>
+</html>

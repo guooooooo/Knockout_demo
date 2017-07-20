@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>过滤并验证用户输入</title>
+        <meta charset="UTF-8">
+        <script src="knockout-3.4.2.js"></script>
+    </head>
+    <body>
+        <p>
+            Enter a numeric value: 
+            <input data-bind="value: attemptedValue"/>
+            <span data-bind="visible: lastInputWasValid()">验证通过!</span>
+        </p>
+        <div data-bind="visible: !lastInputWasValid()">这不是一个合法的数字!</div>
+        <script>
+            function MyViewModel() {
+                this.acceptedNumericValue = ko.observable(123);
+                this.lastInputWasValid = ko.observable(true);
+
+                this.attemptedValue = ko.computed({
+                    read: this.acceptedNumericValue,
+                    write: function (value) {
+                        if (isNaN(value)) {
+                            this.lastInputWasValid(false);
+                        }else {
+                            this.lastInputWasValid(true);
+                            this.acceptedNumericValue(value);
+                        }
+                    },
+                    owner: this
+                });                
+            }
+            ko.applyBindings(new MyViewModel());
+        </script>
+    </body>
+</html>

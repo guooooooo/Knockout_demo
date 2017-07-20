@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>foreach</title>
+        <meta charset="UTF-8">
+        <script src="knockout-3.4.2.js"></script>
+    </head>
+    <body>
+        <select data-bind = "options: selectOptions, optionsText: 'text', optionsValue: 'value', value: result"></select>
+        value： <span data-bind = "text: result"></span><br>
+        <div>
+            Text:
+            <input id="txtOpt" value="选项1">
+        </div>
+        <div>
+            Value:
+            <input id="valOpt" value="1">
+        </div>
+        <input id="addItem" type="button" value="新增选项">
+        <script>
+            function MyViewModel() {
+                var self = this;
+                self.selectOptions = ko.observableArray([
+                    {"text": "请选择", "value": "0"}
+                ]);
+                self.result = ko.observable(0);
+            }
+            var vm = new MyViewModel();
+            ko.applyBindings(vm);
+            document.getElementById('addItem').onclick = function () {
+                vm.selectOptions.push({
+                    "text": document.getElementById('txtOpt').value,
+                    "value": document.getElementById('valOpt').value
+                });
+            };
+        </script>
+    </body>
+</html>

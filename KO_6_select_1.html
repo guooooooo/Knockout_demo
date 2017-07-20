@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>foreach</title>
+        <meta charset="UTF-8">
+        <script src="knockout-3.4.2.js"></script>
+    </head>
+    <body>
+        <select data-bind = "options: selectOptions, optionsText: 'name', optionsValue: 'id', value: result"></select><br>
+        排行： <span data-bind = "text: result"></span><br>
+        <input type="button" value="老幺" data-bind = "click: changeToYoung"/>
+        <script>
+            function MyViewModel() {
+                var self = this;
+                self.selectOptions = [
+                    {name: "老大", id: 1},
+                    {name: "老二", id: 2},
+                    {name: "老幺", id: 3}
+                ];
+                self.result = ko.observable(2);
+                self.changeToYoung = function () {
+                    self.result(3);
+                }
+            }
+            ko.applyBindings(new MyViewModel());
+        </script>
+    </body>
+</html>

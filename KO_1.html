@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <script src="knockout-3.4.2.js"></script>
+    </head>
+    <body>
+        输入值： <input type="text" id="txtValue" data-bind="value: myValue" /><br>
+        相应文本： <span id="spanValue" data-bind="text: myValue"></span>
+        <script>
+            var myViewModel = {
+                myValue: ko.observable("Jack")
+            }
+            ko.applyBindings(myViewModel);
+        </script>
+    </body>
+</html>
