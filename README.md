@@ -1,9 +1,9 @@
 # Knockout_demo
 Knockout.js学习
 三个核心功能：
-1、属性监控与依赖跟踪
-2、声明式绑定
-3、模板机制
+- 属性监控与依赖跟踪
+- 声明式绑定
+- 模板机制
 MVVM（Model-View-View Model）
 Model: 存储应用程序的数据，通常通过Ajax向服务器读写
 View Model: 描述数据内容和页面操作的数据模型
